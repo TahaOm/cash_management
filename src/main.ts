@@ -9,6 +9,8 @@ async function bootstrap() {
   const config: ConfigService = app.get(ConfigService);
   const port: number = config.get<number>('PORT');
 
+  app.set('trust proxy', 1);
+  app.enableCors();
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 
   await app.listen(port, () => {

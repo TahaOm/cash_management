@@ -38,10 +38,7 @@ export class AuthService {
       throw new HttpException('No user found', HttpStatus.NOT_FOUND);
     }
 
-    const isPasswordValid: boolean = this.helper.isPasswordValid(
-      password,
-      user.password,
-    );
+    const isPasswordValid: boolean = this.helper.isPasswordValid(password, user.password);
 
     if (!isPasswordValid) {
       throw new HttpException('No user found', HttpStatus.NOT_FOUND);
