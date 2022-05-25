@@ -1,18 +1,12 @@
 import { Exclude } from 'class-transformer';
-import {
-  BaseEntity,
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, Index, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   public id!: number;
 
+  @Index({ unique: true })
   @Column({ type: 'varchar' })
   public email!: string;
 
@@ -31,4 +25,10 @@ export class User extends BaseEntity {
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   public updatedAt: Date | null;
+
+  @Column({ default: true })
+  isActive: boolean;
+
+  @Column({ default: false })
+  isDeleted: boolean;
 }

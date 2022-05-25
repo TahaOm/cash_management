@@ -25,6 +25,7 @@ module.exports = {
         arrowParens: 'always',
         tabWidth: 2,
         printWidth: 130,
+        'endOfLine': 'auto',
       },
     ],
   },
